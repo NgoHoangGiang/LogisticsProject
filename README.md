@@ -11,8 +11,36 @@
 
 ## Khám phá dữ liệu:
 
-### Xử lý dữ liệu với Python:
-### Trực quan hóa với Power BI:
+### Với Python:
+- Nhập thư viện cần thiết:
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import ElasticNet
+from sklearn.metrics import mean_squared_error, r2_score
+from scipy import stats
+- Đọc dữ liệu:
+df = pd.read_csv('north_size.csv')
+df.head()
+df.info()
+df.shape
+- Kiểm tra giá trị missing trong bộ dữ liệu:
+df.isnull().sum()
+- Kiểm tra giá trị duplicate trong bộ dữ liệu:
+df.duplicated().sum()
+- Kiểm tra các giá trị không phù hợp trong bộ dữ liệu:
+df.select_dtypes(include=[np.number]).lt(0).sum()
+- Thay thế giá trị trong cột 'LOCATION' của bộ dữ liệu:
+df['LOCATION'] = df['LOCATION'].replace('Đường Chợ','Đường chợ')
+- Xuất file .csv sau khi làm sạch bộ dữ liệu:
+df.to_csv('Dulieudetrucquanhoa.csv',encoding='utf-8', index=False)
+
+### Với Power BI:
 ### Xây dựng mô hình hồi quy trên Python:
 ## Insights của dự án: 
 
