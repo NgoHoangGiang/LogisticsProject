@@ -12,72 +12,123 @@
 ## Khám phá dữ liệu:
 
 ### Với Python:
-- Nhập thư viện cần thiết:
+**- Nhập thư viện cần thiết:**
+
 import numpy as np
+
 import pandas as pd
+
 import matplotlib.pyplot as plt
+
 import seaborn as sns
+
 from sklearn.model_selection import train_test_split, GridSearchCV
+
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
+
 from sklearn.compose import ColumnTransformer
+
 from sklearn.pipeline import Pipeline
+
 from sklearn.linear_model import ElasticNet
+
 from sklearn.metrics import mean_squared_error, r2_score
+
 from scipy import stats
 
-- Đọc dữ liệu:
+
+**- Đọc dữ liệu:**
+
 df = pd.read_csv('north_size.csv')
+
 df.head()
+
 df.info()
+
 df.shape
 
-- Kiểm tra giá trị missing trong bộ dữ liệu:
+
+**- Kiểm tra giá trị missing trong bộ dữ liệu:**
+
 df.isnull().sum()
 
-- Kiểm tra giá trị duplicate trong bộ dữ liệu:
+
+**- Kiểm tra giá trị duplicate trong bộ dữ liệu:**
+
 df.duplicated().sum()
 
-- Kiểm tra các giá trị không phù hợp trong bộ dữ liệu:
+
+**- Kiểm tra các giá trị không phù hợp trong bộ dữ liệu:**
+
 df.select_dtypes(include=[np.number]).lt(0).sum()
 
-- Thay thế giá trị trong cột 'LOCATION' của bộ dữ liệu:
+
+**- Thay thế giá trị trong cột 'LOCATION' của bộ dữ liệu:**
+
 df['LOCATION'] = df['LOCATION'].replace('Đường Chợ','Đường chợ')
 
-- Xuất file .csv sau khi làm sạch bộ dữ liệu:
+
+**- Xuất file .csv sau khi làm sạch bộ dữ liệu:**
+
 df.to_csv('Dulieudetrucquanhoa.csv',encoding='utf-8', index=False)
 
 ### Với Power BI:
 
 ### Xây dựng mô hình hồi quy trên Python:
-- Mã hóa biến định tính sang biến định lượng:
+**- Mã hóa biến định tính sang biến định lượng:**
+
 from sklearn.preprocessing import LabelEncoder
+
 le = LabelEncoder()
+
 df['URBAN_RURAL'] = le.fit_transform(df['URBAN_RURAL'])
 
-- Loại bỏ số ngoại lai:
+
+**- Loại bỏ số ngoại lai:**
+
 Q1 = df.select_dtypes(include=[np.number]).quantile(0.25)
+
 Q3 = df.select_dtypes(include=[np.number]).quantile(0.75)
+
 IQR = Q3 - Q1
 
+
 lower_bound = Q1 - 1.5 * IQR
+
 upper_bound = Q3 + 1.5 * IQR
+
 
 df = df[~((df.select_dtypes(include=[np.number]) < lower_bound) | (df.select_dtypes(include=[np.number]) > upper_bound)).any(axis=1)]
 
-- Trực quan hóa ma trận tương quan giữa các biến:
+
+**- Trực quan hóa ma trận tương quan giữa các biến:**
 ![image](https://github.com/user-attachments/assets/a63c92e7-a471-49c4-8dc1-1eca483700f7)
 
-- Xây dựng biến cho mô hình hồi quy:
+**- Xây dựng biến cho mô hình hồi quy:**
+
 X = df[['REVENUE', 'SALES_QTY', 'TOTAL_PROMOTION_COST', 'DISCOUNT_COST', 'URBAN_RURAL']]
+
 y = df['PROFIT']
 
-- Chia tỷ lệ dữ liệu:
+
+**- Chia tỷ lệ dữ liệu:**
+
 from sklearn.preprocessing import StandardScaler
+
 scaler = StandardScaler()
 
 X = scaler.fit_transform(X)
 
-- 
+**- Tách dữ liệu để Train và Test:**
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
+
+from sklearn.linear_model import Ridge
+
+pipeline = Pipeline(steps=[('regressor', Ridge())])  # Linear Regression model
+
 
 ## Insights của dự án: 
 
