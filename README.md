@@ -41,6 +41,8 @@ df['LOCATION'] = df['LOCATION'].replace('Đường Chợ','Đường chợ')
 df.to_csv('Dulieudetrucquanhoa.csv',encoding='utf-8', index=False)
 
 ### Với Power BI:
+
 ### Xây dựng mô hình hồi quy trên Python:
+
 ## Insights của dự án: 
 
