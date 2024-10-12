@@ -109,6 +109,76 @@ df.to_csv('Dulieudetrucquanhoa.csv',encoding='utf-8', index=False)
 
 ## 4. Building and analyzing dashboard:
 
+**- Financial overview:** 
+
+- Total revenue: 22.01 billion VND
+
+- Total profit: 5.59 billion VND, with a profit margin of about 25.4%
+
+- Promotion cost: 955.04 million VND
+
+- Discount cost: 728.3 million VND
+
+-> Although revenue is large, promotion costs and discount costs are also quite high. This may result in an impact on net profit.
+
+![image](https://github.com/user-attachments/assets/3d1e423e-e030-4c47-ace8-48ad233bf4a3)
+
+**- Revenue and profit over time:** 
+
+- Throughout May 2019, revenue tended to increase gradually, especially sharply at the end of the month.
+
+- Although profits also increased, they were lower than revenue
+
+-> The highest revenue at the end of the month shows increased demand during this period, so there should be sales strategies and promotion programs to optimize revenue and profits at the end of the month.
+
+![image](https://github.com/user-attachments/assets/63194385-1d38-446a-88b9-7d563d32192f)
+
+**- Revenue and profit by province/city:** 
+
+- Among the 5 provinces/cities with the highest revenue and profit in the northern region, Hanoi City ranks first in revenue with more than 4 billion VND, significantly high among the top 5 provinces/cities and other provinces. remaining provinces in the region
+
+- Other provinces/cities such as Hai Phong, Bac Ninh, Bac Giang and Thai Binh have much lower revenue and profits than Hanoi city
+
+-> Hanoi city is a key market in the Northern region, it is necessary to strengthen business strategies here to maximize profits. At the same time, also consider evaluating and finding opportunities to improve revenue and profits in other areas to diversify revenue sources for the company.
+
+![image](https://github.com/user-attachments/assets/a95ea0f5-1fab-4c5d-a506-1f32badb4a20)
+
+**- Revenue and profit by business style:** 
+
+- Off Premise Channel accounts for almost all revenue (about 20 billion VND), while On Premise Channel and Current Channel are very low.
+
+-> Focus on developing the Off Premise channel because this is the most effective channel. The remaining channels need strategic review or improvement to increase revenue.
+
+![image](https://github.com/user-attachments/assets/2634f291-317c-4352-b837-278673529a8b)
+
+**- Revenue by location:** 
+
+- "Out on the street" is the location that accounts for 84.88% of total revenue, other locations such as "Market Street", "In the market" and "Street vendor" contribute very little to the total revenue of the entire region.
+
+-> Focus on distributing products to “Off the Road” locations as this is the main selling point, while being able to adjust the strategy for other locations. 
+
+![image](https://github.com/user-attachments/assets/6987c36f-347a-4bac-adf2-715e115a5626)
+
+**- Revenue and profit by brandy:**
+
+- “Kokomi Noodles” and “Omachi Base” are the two products with the highest revenue
+
+- Some other products such as “Nam Ngu” and “Wake Up 247” also have relatively high profits but lower revenue than “Kokomi Noodles” and “Omachi Base”
+
+-> “Kokomi” and “Omachi” are two key products, bringing high revenue to the company, so they should continue to be promoted and distributed more strongly. Other products such as "Nam Ngu" and "Wake Up 247" need cost optimization to increase revenue and profits. 
+
+![image](https://github.com/user-attachments/assets/a3c1140d-f10b-418e-8800-e78ba476c66e)
+
+**- Revenue and profit by brand:**
+
+- “Nam Ngu” and “Kokomi” bring the highest revenue and profit to the company.
+
+- “Omachi” has high revenue but not optimal profit.
+
+-> Continue to focus on developing the brands "Nam Ngu" and "Kokomi". At the same time, improve the profit efficiency of "Omachi" through reducing production costs or increasing selling prices
+
+![image](https://github.com/user-attachments/assets/8d3993f7-2590-48b7-b722-a727313b2248)
+
 ## 5. Predict business situation through linear regression model:
 
 **- Convert qualitative variables to quantitative variables:**
@@ -205,13 +275,13 @@ df.to_csv('Dulieudetrucquanhoa.csv',encoding='utf-8', index=False)
 
 - Beta Coefficients (Coefficients):
 
-+ 1805.66: The Revenue variable has a strong positive influence on the Profit variable.
+1805.66: The Revenue variable has a strong positive influence on the Profit variable.
 
-+ -302.88: The Sales_Qty variable has a negative (negative) influence on the Profit variable, meaning that when the value of this variable increases, the value of the dependent variable tends to decrease.
+-302.88: The Sales_Qty variable has a negative (negative) influence on the Profit variable, meaning that when the value of this variable increases, the value of the dependent variable tends to decrease.
 
-+ 36.83: The Total_Promotion_Cost and Discount_Cost variables have a positive impact on the Profit variable but are not as strong as the Revenue variable.
+36.83: The Total_Promotion_Cost and Discount_Cost variables have a positive impact on the Profit variable but are not as strong as the Revenue variable.
 
-+ -2.34: The Urban_rural variable has an opposite impact on the Profit variable, but the level of influence is smaller than the Sales_Qty variable.
+-2.34: The Urban_rural variable has an opposite impact on the Profit variable, but the level of influence is smaller than the Sales_Qty variable.
 
 - MSE, MAE, R² results: MSE (Mean Squared Error) and MAE (Mean Absolute Error) have quite large values ​​(MSE = 241712.39, MAE = 241712.39), showing that the model has a relatively large error. However, the R² value = 0.92 is quite high, showing that the Ridge regression model explains 92% of the variation in the data, the remaining 8% is explained by other factors that cannot be included in the model. image. Overall, the model has quite good accuracy with high R², but attention should be paid to data points with large residuals.
 
