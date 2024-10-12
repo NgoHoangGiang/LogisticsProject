@@ -113,59 +113,110 @@ df.to_csv('Dulieudetrucquanhoa.csv',encoding='utf-8', index=False)
 
 **- Convert qualitative variables to quantitative variables:**
 
-- from sklearn.preprocessing import LabelEncoder
+- Helps the algorithm process the variable 'URBAN_RURAL' after entering the model
 
-- le = LabelEncoder()
+- Helps the model capture the influence of the variable 'URBAN_RURAL' on the target variable 'PROFIT'
 
-- df['URBAN_RURAL'] = le.fit_transform(df['URBAN_RURAL'])
+- Reduce errors, increase model accuracy
 
 ![image](https://github.com/user-attachments/assets/23f9c720-a4eb-4bc3-b64a-aa829ceb1d51)
 
-Helps the algorithm process the variable 'URBAN_RURAL' after entering the model
-
-Helps the model capture the influence of the variable 'URBAN_RURAL' on the target variable 'PROFIT'
-
-Reduce errors, increase model accuracy
 
 **- Eliminate outliers in the dataset:**
 
+- Outlier numbers can greatly affect the regression coefficient, leading to an inaccurate model.
+
+- Eliminating outliers helps the model more accurately reflect the relationship between variables while improving model performance.
+
+- Helps the model to be less affected by abnormal values, increasing model stability.
+
+- The model will have better prediction ability when it is not affected by data points that are too different.
+
 ![image](https://github.com/user-attachments/assets/b248b196-420b-415e-af9c-f9518958e586)
 
-Outlier numbers can greatly affect the regression coefficient, leading to an inaccurate model.
-
-Eliminating outliers helps the model more accurately reflect the relationship between variables while improving model performance.
-
-Helps the model to be less affected by abnormal values, increasing model stability.
-
-The model will have better prediction ability when it is not affected by data points that are too different.
 
 **- Building a multivariate linear regression model:**
+
+- X is a set of input variables (Independent Variables) including columns: 'REVENUE'; 'SALES_QTY'; 'TOTAL_PROMOTION_COST'; 'DISCOUNT_COST'; 'URBAN_RURAL'
+
+- y is the target variable (Dependent Variable): 'PROFIT'
 
 ![image](https://github.com/user-attachments/assets/6805181e-32bd-4e93-824f-dd69e291d9b3)
 
 
-
 **- Correlation matrix between dependent variable and independent variable:**
 
+![image](https://github.com/user-attachments/assets/b68456c2-9fa4-4854-b357-c89b98e9b39f)
 
-**- Chia tỷ lệ dữ liệu:**
+**- Normalize and split the dataset:**
 
-from sklearn.preprocessing import StandardScaler
+- Using StandardScaler from the sklearn.preprocessing library to normalize the data set X. This method helps give features on the same scale (mean = 0, standard deviation = 1). This is especially important when Machine Learning algorithms approach data scaling, such as Linear Regression, SVM, KNN,...
 
-scaler = StandardScaler()
+- Useing train_test_split from sklearn.model_selection library to split the data set into 2 parts: training set (70%) and testing set (30%). The parameter random_state = 1 ensures the reproducibility of data splitting.
 
-X = scaler.fit_transform(X)
+![image](https://github.com/user-attachments/assets/414689d2-3335-4846-9bf6-e5fe19a8dca3)
 
-**- Tách dữ liệu để Train và Test:**
+- Build a Ridge regression model to limit multicollinearity in the model
 
-from sklearn.model_selection import train_test_split
+- Find the best value for the Alpha parameter by testing different values ​​through cross-validation
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
+- Determine the optimal Alpha value of 0.1, helping to optimize the Ridge model to get the best prediction results.
 
-from sklearn.linear_model import Ridge
+![image](https://github.com/user-attachments/assets/09f4b666-db72-48aa-af15-9480e8c95837)
 
-pipeline = Pipeline(steps=[('regressor', Ridge())])  # Linear Regression model
+**- Model predictions:**
+
+![image](https://github.com/user-attachments/assets/3599c68e-811c-4a31-bb6e-67393e01f20b)
 
 
-## Insights của dự án: 
+**- Checking model's fitting:**
 
+![image](https://github.com/user-attachments/assets/473d8110-dcb0-4133-9a80-f8c09ed5959f)
+
+**- Plot of Residuals vs. Fitted values:**
+
+![image](https://github.com/user-attachments/assets/8ee5c066-be59-498c-ad94-ad40f5a6a23d)
+
+**- Plot of Distribution Residuals:**
+
+![image](https://github.com/user-attachments/assets/d2c66d28-7a92-4951-994e-2dc39d229750)
+
+**- Plot of Actual vs. Predicted values:**
+
+![image](https://github.com/user-attachments/assets/d5269f08-dfa2-4929-9ccf-efec3edaeef1)
+
+## 6. Conclusion: 
+
+### Insights from the dashboard and recommendations for the Logistics department:
+
+- Distribution by province/city: Hanoi city is the main area generating revenue, accounting for the majority of profits in the region. From there, it is proposed to increase warehouse and transportation resources in Hanoi to quickly meet customer needs. At the same time, optimize transportation routes between cities to reduce delivery time.
+
+- Prioritize shipping for effective sales channels: Off Premise sales channel accounts for the entire store's revenue. Therefore, it is necessary to focus maximum logistics resources on this channel. At the same time, design the fastest and most cost-effective route to serve Off Premise retail channels throughout the region.
+
+- "Off-road" sales location: is the top priority: "Off-street" is the sales location that brings in nearly 85% of total revenue throughout the region. Therefore, focus on building effective delivery routes, ensuring goods are always available at "Off-road" sales points. The amount allocated to other locations can be adjusted to avoid wasting resources.
+
+- Warehouse management based on key products: "Kokomi Noodles", "Omachi Base" and "Nam Ngu" are products that need to be prioritized for storage because of high consumer demand from customers. Therefore, warehouses should maintain large inventories of these key products. It is necessary to monitor commodity consumption trends to avoid shortages and at the same time reduce inventory of products with lower demand.
+
+- Strengthen logistics capacity at the end of the month: The company's revenue tends to increase at the end of the month. Therefore, it is necessary to plan to increase distribution of goods at this time, ensuring that goods are always ready for peak sales at the end of the month.
+
+### Rigde regression model:
+
+- Intercept: The intercept is 1820.24, showing that when all independent variables have a value of 0, the predicted value of the dependent variable is 1820.24. This demonstrates that there is a fixed level of influence before considering the impact of other factors.
+
+- Beta Coefficients (Coefficients):
+
++ 1805.66: The Revenue variable has a strong positive influence on the Profit variable.
+
++ -302.88: The Sales_Qty variable has a negative (negative) influence on the Profit variable, meaning that when the value of this variable increases, the value of the dependent variable tends to decrease.
+
++ 36.83: The Total_Promotion_Cost and Discount_Cost variables have a positive impact on the Profit variable but are not as strong as the Revenue variable.
+
++ -2.34: The Urban_rural variable has an opposite impact on the Profit variable, but the level of influence is smaller than the Sales_Qty variable.
+
+- MSE, MAE, R² results: MSE (Mean Squared Error) and MAE (Mean Absolute Error) have quite large values ​​(MSE = 241712.39, MAE = 241712.39), showing that the model has a relatively large error. However, the R² value = 0.92 is quite high, showing that the Ridge regression model explains 92% of the variation in the data, the remaining 8% is explained by other factors that cannot be included in the model. image. Overall, the model has quite good accuracy with high R², but attention should be paid to data points with large residuals.
+
+- Plot of Residuals vs. Fitted values: + This chart tests the model's assumptions about residuals. The residuals do not appear to be randomly distributed, there is some tendency to follow a conical pattern, which may imply that the model has heteroscedasticity problems. This is a sign to consider adjusting the model or applying measures to overcome this phenomenon.
+
+- Plot of Distribution Residuals: This chart shows the distribution of residuals around the value 0. The residuals are most concentrated around the value 0, proving that the model has relative predictive ability. accurate with the majority of forecasts not deviating too much. However, there are some large residuals on either side, which could be a sign of outliers or a not-quite-fit model.
+
+- Plot of Actual vs. Predicted values: This chart shows the close correlation between actual value and predicted value. The red line (45 degree line) represents the model's perfection, and points distributed quite close to this line show that the model's predictions are quite accurate.
