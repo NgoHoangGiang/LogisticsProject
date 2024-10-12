@@ -61,7 +61,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 from scipy import stats
 
 
-**- Đọc dữ liệu:**
+**- Reading data:**
 
 df = pd.read_csv('north_size.csv')
 
@@ -69,33 +69,41 @@ df.head()
 ![image](https://github.com/user-attachments/assets/7611bcb0-3c9f-4d81-8977-b01ad157931b)
 
 df.info()
+
 ![image](https://github.com/user-attachments/assets/2c01a432-74d4-4442-9384-d6589c452d01)
 
 df.shape
+
 ![image](https://github.com/user-attachments/assets/618df394-3496-44d4-83d3-289d2b4006f4)
 
 
-**- Kiểm tra giá trị missing trong bộ dữ liệu:**
+**- Checking for missing values ​​in the dataset:**
 
 df.isnull().sum()
 
+![image](https://github.com/user-attachments/assets/abf37213-c27a-4fe7-934e-ec1dfb05e03e)
 
-**- Kiểm tra giá trị duplicate trong bộ dữ liệu:**
+
+**- Checking for duplicated values ​​in the dataset:**
 
 df.duplicated().sum()
 
+![image](https://github.com/user-attachments/assets/55b61948-b1b8-41da-a0b8-de852e3dc942)
 
-**- Kiểm tra các giá trị không phù hợp trong bộ dữ liệu:**
+
+**- Checking for inconsistent values ​​in the dataset:**
 
 df.select_dtypes(include=[np.number]).lt(0).sum()
 
+![image](https://github.com/user-attachments/assets/8b4dcad4-0c6b-4eb1-a266-40dfee6f6a56)
 
-**- Thay thế giá trị trong cột 'LOCATION' của bộ dữ liệu:**
+
+**- Replace the value in the 'LOCATION' column of the dataset:**
 
 df['LOCATION'] = df['LOCATION'].replace('Đường Chợ','Đường chợ')
 
 
-**- Xuất file .csv sau khi làm sạch bộ dữ liệu:**
+**- Export .csv file after cleaning the dataset:**
 
 df.to_csv('Dulieudetrucquanhoa.csv',encoding='utf-8', index=False)
 
