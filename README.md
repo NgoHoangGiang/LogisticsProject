@@ -1,18 +1,42 @@
-# Dự án Logistics:
-## Xác định vấn đề:
+# Analyzing NHG's business situation and proposing a logistics strategy:
 
-  NHG là một công ty vận chuyển hàng hóa sản phẩm trên toàn quốc. Hiện tại, NHG có trụ sở chính tại thành phố Hà Nội và sau đó họ có rất nhiều văn phòng trên khắp 3 miền cả nước. 
+## Problem Statements:
 
-  David Ngo - giám đốc của NHG đang phải đối mặt với nhiều thách thức trong việc quản lý và tối ưu hóa hoạt động logistic. Mặc dù công ty có trụ sở chính tại Hà Nội và mạng lưới phân phối rộng khắp 3 miền của Việt Nam, ông David gặp khó khăn trong việc theo dõi và quản lý các hoạt động vận chuyển hàng hóa tại khu vực miền Bắc, nơi NHG phân phối sản phẩm cho các cửa hàng.
+### About NHG:
+- The company provides food and beverage products in the Northern provinces of Vietnam.
+- Headquartered in Hanoi, with many offices throughout the North.
+### Director David Ngo's challenges:
+- Difficulty in monitoring the company's business situation (output, revenue, profit,...) in a rapidly growing market.
+- Often receive inaccurate or exaggerated information from branch managers when asking about the business situation over the phone.
+- Receiving different Excel files from managers, making it difficult to see the business situation as a whole.
+### Director David Ngo's wishes:
+- Want to have a simple, clear view of the company's business activities.
+- Need an overview that illustrates the truth from the data.
+- Desire to use actual data to make decisions to increase revenue and profits.
+### Solution:
+- Use Power BI to visualize data, helping David Ngo easily grasp the company's business situation.
+- Focus on key indicators such as output, revenue, and profit to come up with appropriate Logistics strategies for the company.
+- Build a linear regression model to predict the company's business situation.
 
-  Thứ nhất, thông tin và hành vi mua sắm của khách hàng (bao gồm ngày bán, địa điểm, sản phẩm, kênh bán hàng,...) được lưu trữ trong các tệp Excel rời rạc tại các cửa hàng trên khắp miền Bắc. Sự phân tán này gây khó khăn lớn trong việc tổng hợp và phân tích dữ liệu một cách chính xác và nhanh chóng. Thứ hai, ông David đang phải dựa vào các báo cáo từ các nhà quản lý chi nhánh để hiểu về hoạt động kinh doanh. Tuy nhiên, các thông tin này thường không đáng tin cậy do các nhà quản lý có xu hướng "tô hồng" tình hình thực tế, dẫn đến việc ông David không có cái nhìn chính xác về tình hình kinh doanh. Thứ ba, việc phải xử lý 69 tệp Excel riêng lẻ gây ra sự chậm trễ trong việc ra quyết định và dẫn đến sự mơ hồ trong việc nhận định các xu hướng bán hàng. Điều này làm cho ông David không thể có được cái nhìn toàn diện về hoạt động logistic và doanh số bán hàng.
+## Data Mining:
 
-  Điều này làm cho ông ấy thất vọng, ông ấy không thể nhìn bức tranh một cách hoàn chỉnh nhất. David Ngo chỉ quan tâm đến việc có được những thông tin chi tiết đơn giản, dễ hiểu nhưng những gì mà các nhà quản lý đưa ra là quá nhiều và anh ấy không thể tiêu thụ nhiều số lượng như vậy (A picture is worth a thousand words). Thứ nhất, cần phải triển khai một hệ thống quản lý dữ liệu tập trung, nơi tất cả các thông tin bán hàng từ các chi nhánh và cửa hàng có thể được nhập vào một cơ sở dữ liệu duy nhất. Điều này sẽ cho phép ông Bhavin có được cái nhìn toàn diện và kịp thời về hoạt động kinh doanh của công ty. Thứ hai, triển khai Power BI hoặc các công cụ phân tích dữ liệu trực quan khác để tự động hóa quá trình tổng hợp và phân tích dữ liệu. Power BI sẽ giúp ông Bhavin dễ dàng truy cập và xem các biểu đồ, báo cáo, giúp ông hiểu rõ hơn về các xu hướng bán hàng, hiệu suất của từng khu vực, và các yếu tố ảnh hưởng đến doanh thu. Thứ ba, cài đặt hệ thống báo cáo định kỳ tự động để gửi các thông tin chi tiết về hoạt động logistic và doanh số bán hàng. Điều này sẽ giúp ông Bhavin có thể theo dõi tình hình kinh doanh một cách liên tục mà không cần phụ thuộc vào các báo cáo thủ công từ các nhà quản lý.
+### Information about data columns:
+- Information about time: ‘DATE_KEY’ và ‘MONTH_KEY’;
+- Information about locations, stores and distribution centers: 'OUTLET_CODE', 'LOCATION', 'OUTLET_CITY', 'OUTLET_DISTRICT', 'OUTLET_WARD', 'URBAN_RURAL' 'OUTLET_LATITUDE', 'OUTLET_LONGITUDE', 'DC_CODE', 'DC_CITY', 'DC_DISTRICT', 'DC_WARD', 'DC_LATITUDE', 'DC_LONGITUDE';
+- Information about types of business: 'BUSINESSTYPEL1', 'BUSINESSTYPEL2', 'BUSINESSTYPEL3';
+- Information about product: 'DIVISION', 'SUB_CATEGORY', 'BRAND', 'BRANDY', 'VARIANT', 'STD_SKU';
+- Information about financial: 'REVENUE', 'SALES_QTY', 'PROFIT';
+- Information about promotion cost: 'TOTAL_PROMOTION_COST', 'POSM_PROMOTION_COST', 'FG_PROMOTION_COST', 'DISCOUNT_COST', 'FG_PROMOTION_QTY'
+### AIMS Web:
+- **Purpose:** To unlock business insights previously invisible to the sales team, for decision support and data automation, reducing manual data collection time;
+- **Stakeholders:** Sales Director; Marketing team; Customer service team; Data and analysis team; IT.
+- **Final result:** Automated dashboards provide quick and up-to-date sales insights to support data-driven decision-making.
+- **Criteria for success:** Dashboard explores store business insights with existing data; The logistics team can make better decisions based on the company's business situation.
 
-## Khám phá dữ liệu:
+## Data processing:
 
-### Với Python:
-**- Nhập thư viện cần thiết:**
+### With Python:
+**- Import required libraries:**
 
 import numpy as np
 
