@@ -127,31 +127,25 @@ Helps the model capture the influence of the variable 'URBAN_RURAL' on the targe
 
 Reduce errors, increase model accuracy
 
-**- Loại bỏ số ngoại lai:**
+**- Eliminate outliers in the dataset:**
 
-Q1 = df.select_dtypes(include=[np.number]).quantile(0.25)
+![image](https://github.com/user-attachments/assets/b248b196-420b-415e-af9c-f9518958e586)
 
-Q3 = df.select_dtypes(include=[np.number]).quantile(0.75)
+Outlier numbers can greatly affect the regression coefficient, leading to an inaccurate model.
 
-IQR = Q3 - Q1
+Eliminating outliers helps the model more accurately reflect the relationship between variables while improving model performance.
+
+Helps the model to be less affected by abnormal values, increasing model stability.
+
+The model will have better prediction ability when it is not affected by data points that are too different.
+
+**- Building a multivariate linear regression model:**
+
+![image](https://github.com/user-attachments/assets/6805181e-32bd-4e93-824f-dd69e291d9b3)
 
 
-lower_bound = Q1 - 1.5 * IQR
 
-upper_bound = Q3 + 1.5 * IQR
-
-
-df = df[~((df.select_dtypes(include=[np.number]) < lower_bound) | (df.select_dtypes(include=[np.number]) > upper_bound)).any(axis=1)]
-
-
-**- Trực quan hóa ma trận tương quan giữa các biến:**
-![image](https://github.com/user-attachments/assets/a63c92e7-a471-49c4-8dc1-1eca483700f7)
-
-**- Xây dựng biến cho mô hình hồi quy:**
-
-X = df[['REVENUE', 'SALES_QTY', 'TOTAL_PROMOTION_COST', 'DISCOUNT_COST', 'URBAN_RURAL']]
-
-y = df['PROFIT']
+**- Correlation matrix between dependent variable and independent variable:**
 
 
 **- Chia tỷ lệ dữ liệu:**
