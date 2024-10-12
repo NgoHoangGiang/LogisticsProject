@@ -1,6 +1,6 @@
 # Analyzing NHG's business situation and proposing a logistics strategy:
 
-## Problem Statements:
+## 1. Problem Statements:
 
 ### About NHG:
 - The company provides food and beverage products in the Northern provinces of Vietnam.
@@ -18,7 +18,7 @@
 - Focus on key indicators such as output, revenue, and profit to come up with appropriate Logistics strategies for the company.
 - Build a linear regression model to predict the company's business situation.
 
-## Data Mining:
+## 3. Data Mining:
 
 ### Information about data columns:
 - Information about time: ‘DATE_KEY’ và ‘MONTH_KEY’;
@@ -33,7 +33,7 @@
 - **Final result:** Automated dashboards provide quick and up-to-date sales insights to support data-driven decision-making.
 - **Criteria for success:** Dashboard explores store business insights with existing data; The logistics team can make better decisions based on the company's business situation.
 
-## Data processing:
+## 3. Data processing:
 
 ### With Python:
 **- Import required libraries:**
@@ -66,10 +66,13 @@ from scipy import stats
 df = pd.read_csv('north_size.csv')
 
 df.head()
+![image](https://github.com/user-attachments/assets/7611bcb0-3c9f-4d81-8977-b01ad157931b)
 
 df.info()
+![image](https://github.com/user-attachments/assets/2c01a432-74d4-4442-9384-d6589c452d01)
 
 df.shape
+![image](https://github.com/user-attachments/assets/618df394-3496-44d4-83d3-289d2b4006f4)
 
 
 **- Kiểm tra giá trị missing trong bộ dữ liệu:**
