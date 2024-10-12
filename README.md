@@ -18,7 +18,7 @@
 - Focus on key indicators such as output, revenue, and profit to come up with appropriate Logistics strategies for the company.
 - Build a linear regression model to predict the company's business situation.
 
-## 3. Data Mining:
+## 2. Data Mining:
 
 ### Information about data columns:
 - Information about time: ‘DATE_KEY’ và ‘MONTH_KEY’;
@@ -107,17 +107,25 @@ df['LOCATION'] = df['LOCATION'].replace('Đường Chợ','Đường chợ')
 
 df.to_csv('Dulieudetrucquanhoa.csv',encoding='utf-8', index=False)
 
-### Với Power BI:
+## 4. Building and analyzing dashboard:
 
-### Xây dựng mô hình hồi quy trên Python:
-**- Mã hóa biến định tính sang biến định lượng:**
+## 5. Predict business situation through linear regression model:
 
-from sklearn.preprocessing import LabelEncoder
+**- Convert qualitative variables to quantitative variables:**
 
-le = LabelEncoder()
+- from sklearn.preprocessing import LabelEncoder
 
-df['URBAN_RURAL'] = le.fit_transform(df['URBAN_RURAL'])
+- le = LabelEncoder()
 
+- df['URBAN_RURAL'] = le.fit_transform(df['URBAN_RURAL'])
+
+![image](https://github.com/user-attachments/assets/23f9c720-a4eb-4bc3-b64a-aa829ceb1d51)
+
+Helps the algorithm process the variable 'URBAN_RURAL' after entering the model
+
+Helps the model capture the influence of the variable 'URBAN_RURAL' on the target variable 'PROFIT'
+
+Reduce errors, increase model accuracy
 
 **- Loại bỏ số ngoại lai:**
 
